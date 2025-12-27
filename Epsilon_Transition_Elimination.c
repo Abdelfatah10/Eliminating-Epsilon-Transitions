@@ -93,7 +93,45 @@ void read_nfa(NFA *nfa) {
     
     printf("NFA read successfully!\n\n");
 }
-
+// Task 2: Calculate Epsilon Closure
+void calculate_epsilon_closure(NFA *nfa) {
+    printf("\t 2/ Calculating Epsilon Closure \n");
+    
+    for (int state = 0; state < nfa->num_states; state++) {
+        int closure[MAX_STATES];
+        int closure_count = 1;
+        closure[0] = state;
+        
+        int changed = 1;
+        while (changed) {
+            changed = 0;
+            int new_count = closure_count;
+            
+            for (int i = 0; i < closure_count; i++) {
+                int current = closure[i];
+                for (int j = 0; j < nfa->epsilon_count[current]; j++) {
+                    int next = nfa->epsilon_transitions[current][j];
+                    if (!contains_state(closure, new_count, next)) {
+                        closure[new_count++] = next;
+                        changed = 1;
+                    }
+                }
+            }
+            closure_count = new_count;
+        }
+        
+        nfa->closure_count[state] = closure_count;
+        memcpy(nfa->epsilon_closure[state], closure, closure_count * sizeof(int));
+        
+        printf("ε-closure(%d) = { ", state);
+        for (int i = 0; i < closure_count; i++) {
+            printf("%d ", closure[i]);
+        }
+        printf("}\n");
+    }
+    
+    printf("\n");
+}
 
 int main() {
     NFA nfa;
