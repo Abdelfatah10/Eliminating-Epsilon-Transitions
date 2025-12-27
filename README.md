@@ -9,7 +9,7 @@
 | Name | Specialization |
 |------|-----------------|
 | **Djaballah Abdelfatah** | Security Engineering - Group 01 |
-| **Derarja Mohamed** | Security Engineering - Group 01 |
+| **Derardja Mohamed** | Security Engineering - Group 01 |
 | **Achouri Mohamed Tahar** | Security Engineering - Group 01 |
 
 ---
