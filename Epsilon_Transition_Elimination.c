@@ -237,6 +237,40 @@ void determine_final_states(NFA *nfa, int *new_final_states, int *num_new_final)
     }
     printf("}\n\n");
 }
+// Task 5: Display the New Automaton
+void display_automaton(NFA *nfa, int new_transitions[MAX_STATES][MAX_SYMBOLS][MAX_STATES], 
+                       int new_transition_count[MAX_STATES][MAX_SYMBOLS],
+                       int *new_final_states, int num_new_final) {
+    printf("\t 5/ Displaying the New Automaton \n");
+    
+    printf("States: { ");
+    for (int i = 0; i < nfa->num_states; i++) printf("%d ", i);
+    printf("}\n");
+    
+    printf("Symbols: { ");
+    for (int i = 0; i < nfa->num_symbols; i++) printf("%c ", nfa->symbols[i]);
+    printf("}\n");
+    
+    printf("Initial state: %d\n", nfa->initial_state);
+    printf("Final states: { ");
+    for (int i = 0; i < num_new_final; i++) printf("%d ", new_final_states[i]);
+    printf("}\n\n");
+    
+    printf("Transitions:\n");
+    for (int state = 0; state < nfa->num_states; state++) {
+        for (int sym_idx = 0; sym_idx < nfa->num_symbols; sym_idx++) {
+            if (new_transition_count[state][sym_idx] > 0) {
+                printf("δ(%d, %c) = { ", state, nfa->symbols[sym_idx]);
+                for (int i = 0; i < new_transition_count[state][sym_idx]; i++) {
+                    printf("%d ", new_transitions[state][sym_idx][i]);
+                }
+                printf("}\n");
+            }
+        }
+    }
+    
+    printf("\n=== Epsilon Elimination Complete ===\n");
+}
 
 int main() {
     NFA nfa;
