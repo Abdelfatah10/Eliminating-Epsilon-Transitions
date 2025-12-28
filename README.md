@@ -98,14 +98,6 @@ Final States: {2}
 
 ---
 
-## ✅ Features
-
-- ⚡ Fast epsilon closure computation
-- 🎨 Clear formatted output
-- 🔍 Easy-to-follow algorithm steps
-- 💪 Robust error handling
-
----
 
 <div align="center">
 
