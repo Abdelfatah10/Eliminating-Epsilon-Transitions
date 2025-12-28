@@ -74,10 +74,17 @@ New Transitions:
   0 --a--> 2
   0 --b--> 1
   1 --a--> 2
+  2 --b--> 0
+  2 --b--> 1
 
 Final States: {2}
 ```
 
+
+---
+
+## 🎥 Demo
+![App Demo](assets/demo.gif)
 
 ---
 

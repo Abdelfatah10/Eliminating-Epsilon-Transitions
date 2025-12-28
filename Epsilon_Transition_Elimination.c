@@ -1,5 +1,5 @@
 // Djaballah Abdelfatah "G01 Security"
-// Derardja Mohamed "G01 Security"
+// Derarja Mohamed "G01 Security"
 // Achouri Mohamed Tahar "G01 Security"
 
 #include <stdio.h>
@@ -35,6 +35,9 @@ void calculate_epsilon_closure(NFA *nfa);
 void compute_new_transitions(NFA *nfa, int new_transitions[MAX_STATES][MAX_SYMBOLS][MAX_STATES], 
                              int new_transition_count[MAX_STATES][MAX_SYMBOLS]);
 void determine_final_states(NFA *nfa, int *new_final_states, int *num_new_final);
+void display_automaton(NFA *nfa, int new_transitions[MAX_STATES][MAX_SYMBOLS][MAX_STATES], 
+                       int new_transition_count[MAX_STATES][MAX_SYMBOLS],
+                       int *new_final_states, int num_new_final);
 
 bool contains_state(int *array, int count, int state) {
     for (int i = 0; i < count; i++) {
@@ -237,6 +240,7 @@ void determine_final_states(NFA *nfa, int *new_final_states, int *num_new_final)
     }
     printf("}\n\n");
 }
+
 // Task 5: Display the New Automaton
 void display_automaton(NFA *nfa, int new_transitions[MAX_STATES][MAX_SYMBOLS][MAX_STATES], 
                        int new_transition_count[MAX_STATES][MAX_SYMBOLS],
@@ -286,6 +290,7 @@ int main() {
     calculate_epsilon_closure(&nfa);
     compute_new_transitions(&nfa, new_transitions, new_transition_count);
     determine_final_states(&nfa, new_final_states, &num_new_final);
+    display_automaton(&nfa, new_transitions, new_transition_count, new_final_states, num_new_final);
     
     return 0;
 }
